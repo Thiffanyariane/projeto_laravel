@@ -1,0 +1,19 @@
+/* Estilo para o container de login */
+.login-container {
+    width: 26rem !important;
+    padding-top: 5%;
+}
+
+.title-login {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+body{
+    background-color: gray !important;
+}
+/* Outras regras CSS podem ser adicionadas aqui */
+

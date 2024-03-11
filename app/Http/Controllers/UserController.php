@@ -10,12 +10,12 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('index', compact('users'));
+        return view('users.index', compact('users'));
     }
 
     public function create()
     {
-       return view('create');
+       return view('users.create');
     }
 
     public function store(Request $request)
@@ -47,7 +47,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('edit', compact('user'));
+        return view('users.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)

@@ -18,7 +18,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/login.js') }}"></script> <!-- Seu arquivo JS personalizado -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -27,25 +27,36 @@
     <div class="card-body">
 
     <div class="title-login">
-        <h2 >Login</h2>
-      <!-- Pills navs -->
+        <h2>Login</h2>
     </div>
+
+    <!-- Exibição de mensagens de erro -->
+    @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+    @endif
     
     <!-- Pills content -->
     <div class="tab-content">
     <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-      <form>
+      <form method="POST" action="{{ route('login') }}">
+        @csrf
         
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <label class="form-label" for="loginName">Email</label>
-          <input type="email" id="loginName" class="form-control" />
+            <label class="form-label" for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" required autofocus />
         </div>
     
         <!-- Password input -->
         <div class="form-outline mb-4">
-            <label class="form-label" for="loginPassword">Password</label>
-          <input type="password" id="loginPassword" class="form-control" />
+            <label class="form-label" for="password">Senha</label>
+          <input type="password" id="password" name="password" class="form-control" required />
         </div>
     
         <!-- 2 column grid layout -->
@@ -55,7 +66,7 @@
         </div>
     
         <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+        <button type="submit" class="btn btn-primary btn-block mb-4">Entrar</button>
     
         <!-- Register buttons -->
       </form>

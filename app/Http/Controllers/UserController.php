@@ -7,26 +7,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $users = User::all();
         return view('index', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
        return view('create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
     $request->validate([
@@ -43,7 +34,7 @@ class UserController extends Controller
 
     $user->save();
 
-    return redirect()->route('index')->with('sucesso', 'Usuário criado com sucesso!');
+    return redirect()->route('index')->with('sucesso', 'Usuário criado!');
     }
 
     /**
@@ -54,27 +45,31 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        return view('edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+    $request->validate([
+        'name' => 'required|max:255',
+        'email' => 'required|email|unique:users,email,' . $user->id,
+        'password' => 'sometimes|min:8',
+    ]);
+
+    $user->update([
+        'name' => $request->input('name'),
+        'email' => $request->input('email'),
+        'password' => $request->input('password') ? bcrypt($request->input('password')) : $user->password,
+    ]);
+
+    return redirect()->route('index')->with('sucesso', 'Usuário atualizado!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('index')->with('sucesso', 'Usuário excluido!');
     }
 }

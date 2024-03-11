@@ -6,7 +6,23 @@
     <h1>Lista de Usuários</h1>
     <ul>
         @foreach ($users as $user)
-            <li>{{ $user->name }} - {{ $user->email }}</li>
+            <li>{{ $user->name }} - {{ $user->email }}
+                <!-- Botão para editar usuário-->
+                <a href="{{ route('edit', $user) }}">
+                    <button type="submit" class="btn btn-primary">
+                        <ion-icon name="create-outline"></ion-icon>
+                    </button>
+                </a>
+                <!-- Botão para excluir usuário-->
+                <form action="{{ route('destroy', $user) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">
+                        <ion-icon name="trash-outline"></ion-icon>
+                    </button>
+                </form>
+                
+            </li>
         @endforeach
     </ul>
 

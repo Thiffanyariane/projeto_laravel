@@ -27,6 +27,18 @@
     </header>
 
     <main>
+        <div class="row">
+            <div class="d-flex justify-content-center">
+                <ul class="nav">
+                    <li class="nav-item">
+                      <a style="color:inherit" class="nav-link active" aria-current="page" href={{ route('index') }}>Usuários</a>
+                    </li>
+                    <li class="nav-item">
+                      <a style="color:inherit" class="nav-link" href="#">Estoque</a>
+                    </li>
+                  </ul>
+            </div>
+        </div>
         @yield('content')
     </main>
 

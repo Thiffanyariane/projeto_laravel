@@ -23,7 +23,6 @@
 </head>
 <body>
     <header>
-        <!-- Cabeçalho do aplicativo -->
     </header>
 
     <main>
@@ -43,9 +42,7 @@
     </main>
 
     <footer>
-        <!-- Rodapé do aplicativo -->
     </footer>
 
-    <!-- Adicione seus scripts JS aqui -->
 </body>
 </html>

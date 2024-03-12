@@ -1,6 +1,31 @@
-version: "3"
+version: '3'
 services:
-  app:
-    build: .
-    ports:
-      - "8181:8181"
+    php:
+        image: 'php:8.1-fpm'
+        container_name: php
+        volumes:
+            - './:/var/www/html'
+        ports:
+            - '9000:9000'
+        depends_on:
+            - mysql
+    laravel:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: laravel
+        volumes:
+            - './:/var/www/html'
+        ports:
+            - '8000:8181'
+        depends_on:
+            - php
+    mysql:
+        image: mysql
+        ports: 
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: banco_laravel
+            
+

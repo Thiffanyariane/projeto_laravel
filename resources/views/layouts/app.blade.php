@@ -34,7 +34,7 @@
                       <a style="color:inherit" class="nav-link active" aria-current="page" href={{ route('index') }}>Usuários</a>
                     </li>
                     <li class="nav-item">
-                      <a style="color:inherit" class="nav-link" href="#">Estoque</a>
+                      <a style="color:inherit" class="nav-link" href={{ route('stock.index') }}>Estoque</a>
                     </li>
                   </ul>
             </div>

@@ -29,15 +29,7 @@ class StockController extends Controller
 
         StockItem::create($validatedData);
 
-        return redirect()->route('stock.index')->with('success', 'Item de estoque criado!');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        return redirect()->route('stock.index')->with('sucesso', 'Item de estoque criado!');
     }
 
     public function edit(StockItem $stockItem)
@@ -56,14 +48,14 @@ class StockController extends Controller
 
         $stockItem->update($validatedData);
 
-        return redirect()->route('stock.index')->with('success', 'Item de estoque atualizado!');
+        return redirect()->route('stock.index')->with('sucesso', 'Item de estoque atualizado!');
     }
 
     public function destroy(StockItem $stockItem)
     {
         $stockItem->delete();
 
-        return redirect()->route('stock.index')->with('success', 'Item de estoque excluído!');
+        return redirect()->route('stock.index')->with('sucesso', 'Item de estoque excluído!');
     }
 
 }

@@ -37,14 +37,6 @@ class UserController extends Controller
     return redirect()->route('index')->with('sucesso', 'Usuário criado!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
     public function edit(User $user)
     {
         return view('users.edit', compact('user'));
